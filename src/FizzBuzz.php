@@ -10,19 +10,22 @@ class FizzBuzz
     public function execute($number)
     {
         $this->checkValueNumber($number);
-        if ($this->checkFizzBuzz($number)) {
+        if ($this->isFizzBuzz($number)) {
             return self::FIZZ_BUZZ;
         }
         
-        if ($this->checkBuzz($number)) {
+        if ($this->isBuzz($number)) {
             return self::BUZZ;
         }
-        if ($this->checkFizz($number)) {
+        if ($this->isFizz($number)) {
             return self::FIZZ;
         }
         return $number;
     }
-
+    /**
+     * fucntion check value for exception negative number, not number
+     *
+     */
     private function checkValueNumber($number)
     {
         if ($number < 0) {
@@ -33,19 +36,19 @@ class FizzBuzz
             throw new InvalidArgumentException("should be a number");
         }
     }
-    private function checkFizzBuzz($number)
+    private function isFizzBuzz($number)
     {
         if ($number % 15 == 0) {
             return true;
         }
     }
-    private function checkBuzz($number)
+    private function isBuzz($number)
     {
         if ($number % 5 == 0) {
             return true;
         }
     }
-    private function checkFizz($number)
+    private function isFizz($number)
     {
         if ($number % 3 == 0) {
             return true;
@@ -63,6 +66,3 @@ class FizzBuzz
         return $result;
     }
 }
-//debug
-// $x = new FizzBuzz();
-// $x->executeUpTo(100);
